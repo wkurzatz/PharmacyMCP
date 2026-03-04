@@ -8,8 +8,14 @@ Base API: https://health-products.canada.ca/api/drug/
 """
 
 import httpx
+import logging
+import os
 from fastmcp import FastMCP
 from typing import Optional, Literal
+
+# Configure logging level from environment variable (default: INFO)
+_log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+logging.basicConfig(level=getattr(logging, _log_level, logging.INFO))
 
 # Initialize the MCP server
 mcp = FastMCP("Health Canada Drug Product Database")
@@ -757,5 +763,5 @@ async def get_all_drug_info(
 
 
 if __name__ == "__main__":
-    # Run the server in stdio mode
-    mcp.run()
+    # Run the server with streamable HTTP transport
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=8000)

@@ -114,15 +114,17 @@ Prompts provide guided workflows for common tasks:
    ```bash
    python src/dpd_server.py
    ```
-   The server should start without errors. Press `Ctrl+C` to stop.
+   The server will start and listen at `http://localhost:8000/mcp`. Press `Ctrl+C` to stop.
 
 ## Usage
 
-### Running the server directly
+### Running the server
 
 ```bash
 python src/dpd_server.py
 ```
+
+The server starts on **`http://localhost:8000/mcp`** using the MCP Streamable HTTP transport.
 
 ### Running with FastMCP CLI
 
@@ -130,29 +132,15 @@ python src/dpd_server.py
 fastmcp run src/dpd_server.py
 ```
 
-### Installing in Claude Desktop
+### Connecting from Claude Desktop
 
-Add to your Claude Desktop configuration (`claude_desktop_config.json`):
-
-```json
-{
-  "mcpServers": {
-    "pharmacy-dpd": {
-      "command": "python",
-      "args": ["/path/to/PharmacyMCP/src/dpd_server.py"]
-    }
-  }
-}
-```
-
-Or using uv:
+Start the server first (`python src/dpd_server.py`), then add to your Claude Desktop configuration (`claude_desktop_config.json`):
 
 ```json
 {
   "mcpServers": {
     "pharmacy-dpd": {
-      "command": "uv",
-      "args": ["run", "python", "/path/to/PharmacyMCP/src/dpd_server.py"]
+      "url": "http://localhost:8000/mcp"
     }
   }
 }
@@ -160,17 +148,24 @@ Or using uv:
 
 ### Installing in VS Code with GitHub Copilot
 
-Add to your VS Code `settings.json`:
+Start the server first, then add to your VS Code `settings.json`:
 
 ```json
 {
   "github.copilot.chat.mcpServers": {
     "pharmacy-dpd": {
-      "command": "python",
-      "args": ["/path/to/PharmacyMCP/src/dpd_server.py"]
+      "url": "http://localhost:8000/mcp"
     }
   }
 }
+```
+
+### Connecting from Postman
+
+Create a new MCP request in Postman and set the URL to:
+
+```
+http://localhost:8000/mcp
 ```
 
 ## Example Queries
