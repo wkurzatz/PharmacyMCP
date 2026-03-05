@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "28ef9755-db04-4bed-8a97-6d8d9e20ba15",
+		"name": "Pharmacy MCP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Initialize",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"initialize\",\n    \"params\": {\n        \"protocolVersion\": \"2025-06-18\",\n        \"capabilities\": {\n            \"roots\": {\n                \"listChanged\": true\n            },\n            \"sampling\": {},\n            \"elicitation\": {}\n        },\n        \"clientInfo\": {\n            \"name\": \"Postman\",\n            \"version\": \"1\"\n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Tools",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "7cad4e7e462a42078d5abafab75742ef",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"tools/list\",\n    \"params\": {}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Prompts",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "289ab7ca09764ae4a9dbb0136cc22eb6",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"prompts/list\",\n    \"params\": {}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tool Call search_drug_by_brand_name",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "289ab7ca09764ae4a9dbb0136cc22eb6",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"tools/call\",\n    \"params\": {\n      \"name\": \"search_drug_by_brand_name\",\n      \"arguments\": {\n        \"brand_name\": \"Tylenol\",\n        \"status\": 2,\n        \"lang\": \"en\",\n        \"type\": \"json\"\n      }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tool Call search_active_ingredients",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "289ab7ca09764ae4a9dbb0136cc22eb6",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"tools/call\",\n    \"params\": {\n      \"name\": \"search_active_ingredients\",\n      \"arguments\": {\n        \"ingredient_name\": \"acetaminophen\",\n        \"lang\": \"en\",\n        \"type\": \"json\"\n      }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tool Call get_all_drug_info",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "289ab7ca09764ae4a9dbb0136cc22eb6",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"tools/call\",\n    \"params\": {\n      \"name\": \"get_all_drug_info\",\n      \"arguments\": {\n        \"drug_code\": 13913,\n        \"lang\": \"en\"        \n      }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Prompt Call drug_lookup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json, text/event-stream"
+							},
+							{
+								"key": "mcp-session-id",
+								"value": "289ab7ca09764ae4a9dbb0136cc22eb6",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"jsonrpc\": \"2.0\",\n    \"id\": 1,\n    \"method\": \"prompts/get\",\n    \"params\": {\n        \"name\": \"drug_lookup\",\n        \"arguments\": {            \n            \"drug_name\": \"Tylenol\"            \n        }\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8000/mcp/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"mcp",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
